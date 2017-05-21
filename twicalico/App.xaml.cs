@@ -77,6 +77,18 @@ namespace twicalico
                 }
             }
 
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+
+                var statusBar = StatusBar.GetForCurrentView();
+                if (statusBar != null)
+                {
+                    statusBar.BackgroundOpacity = 1;
+                    statusBar.BackgroundColor = Color.FromArgb(0, 93, 64, 55);
+                    statusBar.ForegroundColor = Colors.White;
+                }
+            }
+
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
