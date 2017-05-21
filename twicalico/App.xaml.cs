@@ -7,6 +7,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +25,8 @@ namespace twicalico
     /// </summary>
     sealed partial class App : Application
     {
+
+        public CoreTweet.Tokens twitter;
         /// <summary>
         /// 単一アプリケーション オブジェクトを初期化します。これは、実行される作成したコードの
         ///最初の行であるため、main() または WinMain() と論理的に等価です。
@@ -39,6 +44,7 @@ namespace twicalico
         /// <param name="e">起動の要求とプロセスの詳細を表示します。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // ウィンドウに既にコンテンツが表示されている場合は、アプリケーションの初期化を繰り返さずに、
@@ -59,6 +65,18 @@ namespace twicalico
                 Window.Current.Content = rootFrame;
             }
 
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    titleBar.ButtonBackgroundColor = Color.FromArgb(0, 93, 64, 55);
+                    titleBar.ButtonForegroundColor = Colors.White;
+                    titleBar.BackgroundColor = Color.FromArgb(0, 93, 64, 55);
+                    titleBar.ForegroundColor = Colors.White;
+                }
+            }
+
             if (e.PrelaunchActivated == false)
             {
                 if (rootFrame.Content == null)
@@ -66,7 +84,17 @@ namespace twicalico
                     // ナビゲーション スタックが復元されない場合は、最初のページに移動します。
                     // このとき、必要な情報をナビゲーション パラメーターとして渡して、新しいページを
                     //構成します
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    var token = new LocalTokenManager().getToken();
+
+                    if (token != null)
+                    {
+                        twitter = token;
+                        rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    }
+                    else
+                    {
+                        rootFrame.Navigate(typeof(OAuthPage), e.Arguments);
+                    }
                 }
                 // 現在のウィンドウがアクティブであることを確認します
                 Window.Current.Activate();

@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="twicalico.OAuthPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:twicalico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="OAuth"/>
+        <TextBox Text="{x:Bind PinCode , Mode=TwoWay}" HorizontalAlignment="Left" Grid.Column="1" Width="317" InputScope="NumericPin" PlaceholderText="PIN"/>
+        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Content="Auth" VerticalAlignment="Bottom" Click="PIN_Auth_Button_Click"/>
+        <WebView x:Name="AuthWebView" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"/>
+    </Grid>
+</Page>

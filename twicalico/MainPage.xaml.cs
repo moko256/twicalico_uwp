@@ -25,6 +25,25 @@ namespace twicalico
         public MainPage()
         {
             this.InitializeComponent();
+
+            ContentRootFrame.Navigate(typeof(TimelinePage));
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ExploreMenuSpliteView.IsPaneOpen = !ExploreMenuSpliteView.IsPaneOpen;
+        }
+
+        private void TweetButton_Click(object sender, RoutedEventArgs e)
+        {
+            postTweet(TweetBox.Text);
+            TweetBox.Text = "";
+        }
+
+        private async void postTweet(string text)
+        {
+            var twitter = (Application.Current as App).twitter;
+            await twitter.Statuses.UpdateAsync(status => text);
         }
     }
 }

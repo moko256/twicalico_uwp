@@ -7,7 +7,122 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <SplitView
+        x:Name="ExploreMenuSpliteView"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+        DisplayMode="CompactOverlay"
+        IsPaneOpen="False"
+        CompactPaneLength="50">
+        <SplitView.Pane>
+            <StackPanel Background="#795548">
+                <Button
+                    x:Name="HamburgerButton"
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="&#xE700;"
+                    Foreground="White"
+                    Width="50" Height="50"
+                    Background="Transparent"
+                    Click="HamburgerButton_Click"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="TimelineButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE10F;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="TimeLine"
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="MentionButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE97A;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="Mention"
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="UserProfileButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE8D4;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="User"
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="FollowFollowerButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE716;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="Follow and follower"
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="LikeButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xEB51;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="Likes"
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button
+                        x:Name="SettingsButton"
+                        FontFamily="Segoe MDL2 Assets"
+                        Content="&#xE713;"
+                        Foreground="White"
+                        Width="50" Height="50"
+                        Background="Transparent"/>
+                    <TextBlock
+                        Text="Setting..."
+                        FontSize="18"
+                        Foreground="White"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="ContentRootFrame" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="TweetBox" PlaceholderText="What are you doing?" Grid.Row="1" />
+                <Button Content="Tweet" Grid.Row="1" Grid.Column="1" Click="TweetButton_Click" />
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
 </Page>
