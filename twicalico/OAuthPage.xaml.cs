@@ -43,9 +43,23 @@ namespace twicalico
         private async void startAuth()
         {
             var consumer = new TwitterConsumerImpl() as TwitterConsumer;
+
             sessions = await CoreTweet.OAuth.AuthorizeAsync(consumer.ConsumerKey(), consumer.ConsumerSecret());
-            var succeed = await Windows.System.Launcher.LaunchUriAsync(sessions.AuthorizeUri);
-            if (!succeed)
+
+            ContentDialog authTypeDialog = new ContentDialog()
+            {
+                Title = "Select OAuth type",
+                Content = "WebView or Browser",
+                PrimaryButtonText = "Browser",
+                SecondaryButtonText = "WebView"
+            };
+            ContentDialogResult result = await authTypeDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                var succeed = await Windows.System.Launcher.LaunchUriAsync(sessions.AuthorizeUri);
+            }
+            else
             {
                 AuthWebView.Navigate(sessions.AuthorizeUri);
             }
