@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="twicalico.BaseStatusesListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:twitter="using:CoreTweet"
+    xmlns:local="using:twicalico"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ListView ItemsSource="{x:Bind Items}">
+        <ListView.Footer>
+            <ProgressRing Width="50" Height="50" IsActive="True" />
+        </ListView.Footer>
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="twitter:Status">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{x:Bind User.ProfileImageUrlHttps}" Width="50" Height="50" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{x:Bind User.Name}" Grid.Column="2"/>
+                    <TextBlock Text="{x:Bind User.ScreenName}" Grid.Row="1" Grid.Column="2" Foreground="DarkGray"/>
+                    <TextBlock Text="{x:Bind Text}" TextWrapping="Wrap" Grid.Row="2" Grid.ColumnSpan="3"/>
+                </Grid>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</UserControl>

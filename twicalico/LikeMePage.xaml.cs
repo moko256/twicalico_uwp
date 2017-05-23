@@ -8,12 +8,12 @@ namespace twicalico
     /// <summary>
     /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
     /// </summary>
-    public sealed partial class TimelinePage : Page
+    public sealed partial class LikeMePage : Page
     {
-        public TimelinePage()
+        public LikeMePage()
         {
             this.InitializeComponent();
-            StatusListView.StatusesSource = param => (Application.Current as App).twitter.Statuses.HomeTimelineAsync(param);
+            StatusListView.StatusesSource = param => (Application.Current as App).twitter.Favorites.ListAsync(param);
         }
     }
 }
