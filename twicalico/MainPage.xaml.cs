@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // 空白ページの項目テンプレートについては、https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x411 を参照してください
 
@@ -44,6 +32,47 @@ namespace twicalico
         {
             var twitter = (Application.Current as App).twitter;
             await twitter.Statuses.UpdateAsync(status => text);
+        }
+
+        private void TimelineButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(ContentRootFrame.Content is TimelinePage))
+            {
+                ContentRootFrame.Navigate(typeof(TimelinePage));
+            }
+        }
+
+        private void MentionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(ContentRootFrame.Content is MentionsPage)){
+                ContentRootFrame.Navigate(typeof(MentionsPage));
+            }
+        }
+
+        private void UserProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(ContentRootFrame.Content is MyAccountPage))
+            {
+                ContentRootFrame.Navigate(typeof(MyAccountPage));
+            }
+        }
+
+        private void FollowFollowerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LikeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(ContentRootFrame.Content is LikeMePage))
+            {
+                ContentRootFrame.Navigate(typeof(LikeMePage));
+            }
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

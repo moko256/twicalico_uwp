@@ -30,7 +30,8 @@
                         Content="&#xE10F;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="TimelineButton_Click"/>
                     <TextBlock
                         Text="TimeLine"
                         FontSize="18"
@@ -44,7 +45,8 @@
                         Content="&#xE97A;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="MentionButton_Click"/>
                     <TextBlock
                         Text="Mention"
                         FontSize="18"
@@ -58,7 +60,8 @@
                         Content="&#xE8D4;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="UserProfileButton_Click"/>
                     <TextBlock
                         Text="User"
                         FontSize="18"
@@ -72,7 +75,8 @@
                         Content="&#xE716;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="FollowFollowerButton_Click"/>
                     <TextBlock
                         Text="Follow and follower"
                         FontSize="18"
@@ -86,7 +90,8 @@
                         Content="&#xEB51;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="LikeButton_Click"/>
                     <TextBlock
                         Text="Likes"
                         FontSize="18"
@@ -100,7 +105,8 @@
                         Content="&#xE713;"
                         Foreground="White"
                         Width="50" Height="50"
-                        Background="Transparent"/>
+                        Background="Transparent"
+                        Click="SettingsButton_Click"/>
                     <TextBlock
                         Text="Setting..."
                         FontSize="18"
