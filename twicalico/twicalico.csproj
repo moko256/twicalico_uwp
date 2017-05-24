@@ -117,6 +117,9 @@
     <Compile Include="LikeMePage.xaml.cs">
       <DependentUpon>LikeMePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusControl.xaml.cs">
+      <DependentUpon>StatusControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimelinePage.xaml.cs">
       <DependentUpon>TimelinePage.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
     <Page Include="LikeMePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StatusControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TimelinePage.xaml">
       <Generator>MSBuild:Compile</Generator>

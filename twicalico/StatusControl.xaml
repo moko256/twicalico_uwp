@@ -1,0 +1,37 @@
+﻿<UserControl
+    x:Class="twicalico.StatusControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:twicalico"
+    xmlns:twitter="using:CoreTweet"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{x:Bind retweetedTextMessage}" TextWrapping="Wrap" Visibility="{x:Bind retweetTextMessageVisibility}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Foreground="DarkGray"/>
+        <Image Source="{x:Bind display.User.ProfileImageUrlHttps}" Width="50" Height="50" Grid.RowSpan="2" HorizontalAlignment="Left" Grid.Row="1"/>
+        <TextBlock Text="{x:Bind display.User.Name}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="{x:Bind display.User.ScreenName}" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Foreground="DarkGray"/>
+        <TextBlock Text="{x:Bind display.Text}" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{x:Bind display.CreatedAt.TimeOfDay}" TextWrapping="Wrap" HorizontalAlignment="Right" Grid.ColumnSpan="2" Foreground="DarkGray" Grid.Row="1"/>
+        <ListView ItemsSource="{x:Bind display.Entities.Media}" Grid.Row="4" Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="twitter:MediaEntity">
+                    <Image Source="{x:Bind MediaUrlHttps}" Width="200" Height="200"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>
