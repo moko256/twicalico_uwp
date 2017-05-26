@@ -26,12 +26,6 @@
         <TextBlock Text="{x:Bind display.User.ScreenName}" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Foreground="DarkGray"/>
         <TextBlock Text="{x:Bind display.Text}" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="2"/>
         <TextBlock Text="{x:Bind display.CreatedAt.TimeOfDay}" TextWrapping="Wrap" HorizontalAlignment="Right" Grid.ColumnSpan="2" Foreground="DarkGray" Grid.Row="1"/>
-        <ListView ItemsSource="{x:Bind display.Entities.Media}" Grid.Row="4" Grid.ColumnSpan="2">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="twitter:MediaEntity">
-                    <Image Source="{x:Bind MediaUrlHttps}" Width="200" Height="200"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <local:TweetImageTableControl DataContext="{x:Bind display.ExtendedEntities.Media}" Visibility="{x:Bind imageTableVisibility}" Grid.Row="4" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

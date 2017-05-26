@@ -15,17 +15,15 @@ namespace twicalico
 
         public Status Status => this.DataContext as Status;
 
-        private Visibility retweetTextMessageVisibility
-        {
-            get
-            {
-                return (retweetedTextMessage != null) ? Visibility.Visible : Visibility.Collapsed;
-            }
-        }
-
         Status display { get; set; }
 
         private string retweetedTextMessage { get; set; }
+        private Visibility retweetTextMessageVisibility
+        {
+            get=>(retweetedTextMessage != null) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private Visibility imageTableVisibility { get; set; }
 
         public StatusControl()
         {
@@ -37,6 +35,7 @@ namespace twicalico
                 {
                     display = (status.RetweetedStatus != null) ? status.RetweetedStatus : status;
                     retweetedTextMessage = (status.RetweetedStatus != null) ? "Retweeted by " + status.User.Name : null;
+                    imageTableVisibility = (status.ExtendedEntities != null && status.ExtendedEntities.Media != null) ? Visibility.Visible : Visibility.Collapsed;
                 }
                 this.Bindings.Update();
             };

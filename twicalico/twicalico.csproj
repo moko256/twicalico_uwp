@@ -123,6 +123,9 @@
     <Compile Include="TimelinePage.xaml.cs">
       <DependentUpon>TimelinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TweetImageTableControl.xaml.cs">
+      <DependentUpon>TweetImageTableControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TwitterConsumer.cs" />
     <Compile Include="TwitterConsumerImpl.cs" />
   </ItemGroup>
@@ -223,6 +226,10 @@
     <Page Include="TimelinePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TweetImageTableControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
