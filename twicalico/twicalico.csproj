@@ -75,6 +75,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -110,6 +111,7 @@
     <Compile Include="OAuthPage.xaml.cs">
       <DependentUpon>OAuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlusAtMarkConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseStatusesListControl.xaml.cs">
       <DependentUpon>BaseStatusesListControl.xaml</DependentUpon>
@@ -123,6 +125,7 @@
     <Compile Include="TimelinePage.xaml.cs">
       <DependentUpon>TimelinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TimeSpanConverter.cs" />
     <Compile Include="TweetImageTableControl.xaml.cs">
       <DependentUpon>TweetImageTableControl.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,8 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\ja-JP\Resources.resw" />
     <None Include="twicalico_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +245,7 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

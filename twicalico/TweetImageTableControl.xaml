@@ -16,9 +16,9 @@
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="image0" Stretch="UniformToFill"/>
-        <Image x:Name="image1" Stretch="UniformToFill"/>
-        <Image x:Name="image2" Stretch="UniformToFill"/>
-        <Image x:Name="image3" Stretch="UniformToFill"/>
+        <Image x:Name="image0" Stretch="UniformToFill" Grid.Row="{x:Bind GridRow0}" Grid.Column="{x:Bind GridColumn0}" Grid.RowSpan="{x:Bind GridRowSpan0}" Grid.ColumnSpan="{x:Bind GridColumnSpan0}" Visibility="{x:Bind GridVisibility0}"/>
+        <Image x:Name="image1" Stretch="UniformToFill" Grid.Row="{x:Bind GridRow1}" Grid.Column="{x:Bind GridColumn1}" Grid.RowSpan="{x:Bind GridRowSpan1}" Grid.ColumnSpan="{x:Bind GridColumnSpan1}" Visibility="{x:Bind GridVisibility1}"/>
+        <Image x:Name="image2" Stretch="UniformToFill" Grid.Row="{x:Bind GridRow2}" Grid.Column="{x:Bind GridColumn2}" Grid.RowSpan="{x:Bind GridRowSpan2}" Grid.ColumnSpan="{x:Bind GridColumnSpan2}" Visibility="{x:Bind GridVisibility2}"/>
+        <Image x:Name="image3" Stretch="UniformToFill" Grid.Row="{x:Bind GridRow3}" Grid.Column="{x:Bind GridColumn3}" Grid.RowSpan="{x:Bind GridRowSpan3}" Grid.ColumnSpan="{x:Bind GridColumnSpan3}" Visibility="{x:Bind GridVisibility3}"/>
     </Grid>
 </UserControl>

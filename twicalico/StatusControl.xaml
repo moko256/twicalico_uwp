@@ -8,6 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <local:TimeSpanConverter x:Key="Timespan"/>
+        <local:PlusAtMarkConverter x:Key="At"/>
+    </UserControl.Resources>
+
     <Grid Margin="10" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,9 +28,9 @@
         <TextBlock Text="{x:Bind retweetedTextMessage}" TextWrapping="Wrap" Visibility="{x:Bind retweetTextMessageVisibility}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Foreground="DarkGray"/>
         <Image Source="{x:Bind display.User.ProfileImageUrlHttps}" Width="50" Height="50" Grid.RowSpan="2" HorizontalAlignment="Left" Grid.Row="1"/>
         <TextBlock Text="{x:Bind display.User.Name}" TextWrapping="Wrap" Grid.Column="1" Grid.Row="1"/>
-        <TextBlock Text="{x:Bind display.User.ScreenName}" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Foreground="DarkGray"/>
+        <TextBlock Text="{x:Bind display.User.ScreenName,Converter={StaticResource At}}" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Foreground="DarkGray"/>
         <TextBlock Text="{x:Bind display.Text}" TextWrapping="Wrap" Grid.Row="3" Grid.ColumnSpan="2"/>
-        <TextBlock Text="{x:Bind display.CreatedAt.TimeOfDay}" TextWrapping="Wrap" HorizontalAlignment="Right" Grid.ColumnSpan="2" Foreground="DarkGray" Grid.Row="1"/>
-        <local:TweetImageTableControl DataContext="{x:Bind display.ExtendedEntities.Media}" Visibility="{x:Bind imageTableVisibility}" Grid.Row="4" Grid.ColumnSpan="2"/>
+        <TextBlock Text="{x:Bind display.CreatedAt,Converter={StaticResource Timespan}}" TextWrapping="Wrap" HorizontalAlignment="Right" Grid.ColumnSpan="2" Foreground="DarkGray" Grid.Row="1"/>
+        <local:TweetImageTableControl DataContext="{x:Bind imageTableContent}" Grid.Row="4" Grid.ColumnSpan="2" Height="{x:Bind Width}"/>
     </Grid>
 </UserControl>

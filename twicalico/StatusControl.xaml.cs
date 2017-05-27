@@ -20,10 +20,10 @@ namespace twicalico
         private string retweetedTextMessage { get; set; }
         private Visibility retweetTextMessageVisibility
         {
-            get=>(retweetedTextMessage != null) ? Visibility.Visible : Visibility.Collapsed;
+            get => (retweetedTextMessage != null) ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private Visibility imageTableVisibility { get; set; }
+        private MediaEntity[] imageTableContent { get; set; }
 
         public StatusControl()
         {
@@ -35,7 +35,7 @@ namespace twicalico
                 {
                     display = (status.RetweetedStatus != null) ? status.RetweetedStatus : status;
                     retweetedTextMessage = (status.RetweetedStatus != null) ? "Retweeted by " + status.User.Name : null;
-                    imageTableVisibility = (status.ExtendedEntities != null && status.ExtendedEntities.Media != null) ? Visibility.Visible : Visibility.Collapsed;
+                    imageTableContent = (status.ExtendedEntities != null) ? status.ExtendedEntities.Media : null;
                 }
                 this.Bindings.Update();
             };

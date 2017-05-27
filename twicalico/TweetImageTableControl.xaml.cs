@@ -29,11 +29,47 @@ namespace twicalico
         
         private int[,,] Params = new int[,,]
         {
-            {{0,0,2,2},{0,0,0,0},{0,0,0,0},{0,0,0,0}},
-            {{0,0,2,1},{0,1,2,1},{0,0,0,0},{0,0,0,0}},
-            {{0,0,2,1},{0,1,1,1},{1,1,1,1},{0,0,0,0}},
+            {{0,0,2,2},{0,0,1,1},{0,0,1,1},{0,0,1,1}},
+            {{0,0,2,1},{0,1,2,1},{0,0,1,1},{0,0,1,1}},
+            {{0,0,2,1},{0,1,1,1},{1,1,1,1},{0,0,1,1}},
             {{0,0,1,1},{0,1,1,1},{1,0,1,1},{1,1,1,1}}
         };
+
+        private int count()
+        {
+            if (Medias != null)
+            {
+                return Medias.Length;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        private int GridRow0 { get => Params[count() - 1, 0, 0]; }
+        private int GridColumn0 { get => Params[count() - 1, 0, 1]; }
+        private int GridRowSpan0 { get => Params[count() - 1, 0, 2]; }
+        private int GridColumnSpan0 { get => Params[count() - 1, 0, 3]; }
+        private Visibility GridVisibility0 { get => count() > 0 ? Visibility.Visible : Visibility.Collapsed; }
+
+        private int GridRow1 { get => Params[count() - 1, 1, 0]; }
+        private int GridColumn1 { get => Params[count() - 1, 1, 1]; }
+        private int GridRowSpan1 { get => Params[count() - 1, 1, 2]; }
+        private int GridColumnSpan1 { get => Params[count() - 1, 1, 3]; }
+        private Visibility GridVisibility1 { get => count() > 1 ? Visibility.Visible : Visibility.Collapsed; }
+
+        private int GridRow2 { get => Params[count() - 1, 2, 0]; }
+        private int GridColumn2 { get => Params[count() - 1, 2, 1]; }
+        private int GridRowSpan2 { get => Params[count() - 1, 2, 2]; }
+        private int GridColumnSpan2 { get => Params[count() - 1, 2, 3]; }
+        private Visibility GridVisibility2 { get => count() > 2 ? Visibility.Visible : Visibility.Collapsed; }
+
+        private int GridRow3 { get => Params[count() - 1, 3, 0]; }
+        private int GridColumn3 { get => Params[count() - 1, 3, 1]; }
+        private int GridRowSpan3 { get => Params[count() - 1, 3, 2]; }
+        private int GridColumnSpan3 { get => Params[count() - 1, 3, 3]; }
+        private Visibility GridVisibility3 { get => count() > 3?Visibility.Visible:Visibility.Collapsed; }
 
         public TweetImageTableControl()
         {
@@ -44,47 +80,25 @@ namespace twicalico
                 var medias = fe.DataContext as MediaEntity[];
                 if (medias != null && medias.Length > 0)
                 {
+                    this.Visibility = Visibility.Visible;
+
+                    this.Bindings.Update();
+
                     var images = new Image[] { image0, image1, image2, image3 };
-                    for (var i = 0; i < 4; i++)
-                    {
-                        if (i < medias.Length)
-                        {
-                            images[i].Visibility = Visibility.Visible;
-                            images[i].SetValue(Grid.RowProperty, Params[medias.Length - 1, i, 0]);
-                            images[i].SetValue(Grid.ColumnProperty, Params[medias.Length - 1, i, 1]);
-                            images[i].SetValue(Grid.RowSpanProperty, Params[medias.Length - 1, i, 2]);
-                            images[i].SetValue(Grid.ColumnSpanProperty, Params[medias.Length - 1, i, 3]);
-                        }
-                        else
-                        {
-                            images[i].SetValue(Grid.RowProperty, Params[medias.Length - 1, i, 0]);
-                            images[i].SetValue(Grid.ColumnProperty, Params[medias.Length - 1, i, 1]);
-                            images[i].SetValue(Grid.RowSpanProperty, 1);
-                            images[i].SetValue(Grid.ColumnSpanProperty, 1);
-                            images[i].Visibility = Visibility.Collapsed;
-                        }
-                    }
-                    for (var f = 0; f < medias.Length; f++)
+
+                    for (var i = 0; i < medias.Length; i++)
                     {
                         BitmapImage picture = new BitmapImage();
-                        picture.DecodePixelType = DecodePixelType.Logical;
-                        images[f].Source = picture;
-                        picture.UriSource = new Uri(medias[f].MediaUrl + ":medium");
+                        picture.UriSource = new Uri(medias[i].MediaUrl + ":small");
+                        picture.AutoPlay = true;
+                        images[i].Source = picture;
                     }
                 }
+                else
+                {
+                    this.Visibility = Visibility.Collapsed;
+                }
             };
-        }
-
-        protected override Size MeasureOverride(Size availableSize)
-        {
-            if (availableSize.Width != 0)
-            {
-                availableSize.Height = availableSize.Width * 9 / 16;
-            } else if (availableSize.Height != 0)
-            {
-                availableSize.Width = availableSize.Height * 16 / 9;
-            }
-            return availableSize;
         }
     }
 }
